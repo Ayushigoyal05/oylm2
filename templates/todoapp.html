@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <title>Document</title>
+    <style>
+       
+        
+        .card{
+            margin-left: 350px;
+            margin-top: 150px;
+            background-color: palegoldenrod;
+            height: fit-content;
+            width: 1400px;
+
+        }
+        .first{
+            
+            color: black;
+            text-decoration: none;
+           
+            
+        }
+        .second{
+           
+            background-color:rgb(206,199,199);
+            text-decoration: none;
+            
+           
+            
+        }
+        .third{
+            background-color: orange;
+            text-decoration: none;
+            border: solid orange;
+            color:white;
+            border-radius: 5px;
+            height: 35px;
+        }
+
+        .fifth{
+            list-style-type: none;
+            padding-left: 0px;
+            border: solid gray;
+            margin: 0px;
+            padding: 2px;
+            width: 250px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    
+    <div class="card" style="width: 18rem;">
+        <form action="/" method="POST">
+            {% csrf_token %}
+        <input type="text" name="todo" id="todo">
+        <input class="third" type="submit" name="submit" id="submit" value="ADD">
+        <div class="card-body">
+          <h5 class="card-title">Your todo List</h5>
+          {% for i in all %}
+          <ul class="fifth">
+              {% if i.completed %}
+              <li class="second">{{i.todo}} </li>
+              {% else %}
+              <a href="{% url 'complete' i.id %}"><li class="first">{{i.todo}} </li></a>
+              {% endif %}
+          </ul>
+          {% endfor %}
+          <div style="padding-top: 8px;">
+          <a href="deletecomp/" name="deletecomp" id="deletecomp" class="third">DELETE COMPLATED</a>
+          <a href="delall/" name="delall" id="delall" class="third">DELETE ALL</a>
+             
+        </div>
+          </div>
+      
+    </form>
+</div>
+</div>
+</body>
+</html>
